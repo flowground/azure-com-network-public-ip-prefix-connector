@@ -1,0 +1,152 @@
+{
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/network-publicIpPrefix/2018-12-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "PublicIPPrefixes_ListAll": {
+            "main": "./lib/actions/PublicIPPrefixes_ListAll.js",
+            "title": "Gets all the public IP prefixes in a subscription.",
+            "description": "Gets all the public IP prefixes in a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublicIPPrefixes_ListAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublicIPPrefixes_List": {
+            "main": "./lib/actions/PublicIPPrefixes_List.js",
+            "title": "Gets all public IP prefixes in a resource group.",
+            "description": "Gets all public IP prefixes in a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublicIPPrefixes_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublicIPPrefixes_Delete": {
+            "main": "./lib/actions/PublicIPPrefixes_Delete.js",
+            "title": "Deletes the specified public IP prefix.",
+            "description": "Deletes the specified public IP prefix.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublicIPPrefixes_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublicIPPrefixes_Get": {
+            "main": "./lib/actions/PublicIPPrefixes_Get.js",
+            "title": "Gets the specified public IP prefix in a specified resource group.",
+            "description": "Gets the specified public IP prefix in a specified resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublicIPPrefixes_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublicIPPrefixes_UpdateTags": {
+            "main": "./lib/actions/PublicIPPrefixes_UpdateTags.js",
+            "title": "Updates public IP prefix tags.",
+            "description": "Updates public IP prefix tags.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublicIPPrefixes_UpdateTags.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublicIPPrefixes_CreateOrUpdate": {
+            "main": "./lib/actions/PublicIPPrefixes_CreateOrUpdate.js",
+            "title": "Creates or updates a static or dynamic public IP prefix.",
+            "description": "Creates or updates a static or dynamic public IP prefix.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublicIPPrefixes_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
